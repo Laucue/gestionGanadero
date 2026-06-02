@@ -1,0 +1,113 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Horario de Alimentación</h3>
+
+<EditForm Model="objFeedingSchedule" OnValidSubmit="SaveFeedingSchedule" FormName="FrmFeedingSchedule">
+    <div>
+        <label>Animal:</label>
+        <InputSelect @bind-Value="objFeedingSchedule.IdAnimal">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var animal in animals)
+                {
+                    <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Especie:</label>
+        <InputSelect @bind-Value="objFeedingSchedule.IdSpecies">
+            <option value="">Seleccione</option>
+            @if (species != null)
+            {
+                @foreach (var s in species)
+                {
+                    <option value="@s.IdSpecies">@s.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Dieta:</label>
+        <InputSelect @bind-Value="objFeedingSchedule.IdDiet">
+            <option value="">Seleccione</option>
+            @if (diets != null)
+            {
+                @foreach (var diet in diets)
+                {
+                    <option value="@diet.IdDiet">@diet.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Fecha Inicio:</label>
+        <InputDate @bind-Value="objFeedingSchedule.StartDate" />
+    </div>
+    <div>
+        <label>Fecha Fin:</label>
+        <InputDate @bind-Value="objFeedingSchedule.EndDate" />
+    </div>
+    <div>
+        <label>Hora:</label>
+        <InputText @bind-Value="objFeedingSchedule.Time" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia del horario de alimentación que se está creando
+    FeedingSchedulesEntity objFeedingSchedule = new FeedingSchedulesEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Listas para los selects
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    List<DietsEntity> diets = new List<DietsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga las listas necesarias de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de datos
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+        diets = await Task.Run(() => DietsLog.DietList());
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda el horario de alimentación en la base de datos.
+     */
+    private void SaveFeedingSchedule()
+    {
+        try
+        {
+            // Llama al método para crear un horario de alimentación en la capa lógica
+            FeedingSchedulesLog.CreateFeedingSchedule(objFeedingSchedule);
+            // Muestra un mensaje de éxito
+            successMessage = "El horario de alimentación se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objFeedingSchedule = new FeedingSchedulesEntity();
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar el horario de alimentación: {ex.Message}";
+        }
+    }
+}

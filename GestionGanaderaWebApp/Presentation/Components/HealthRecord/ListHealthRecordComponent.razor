@@ -1,0 +1,58 @@
+ListHealthRecordComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Registros de Salud</h3>
+
+<div>
+    <a href="healthrecord/create" class="btn btn-primary">Crear Nuevo Registro de Salud</a>
+</div>
+
+@if (healthRecordList != null && healthRecordList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Animal</th>
+            <th>Fecha</th>
+            <th>Peso (Kg)</th>
+            <th>Estado de Salud</th>
+            <th>Observaciones</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var record in healthRecordList)
+        {
+            <tr>
+                <td>@record.IdHealthRecord</td>
+                <td>@(record.Animal?.EarringCode ?? "N/A")</td>
+                <td>
+                    <a href="healthrecord/update/@record.IdHealthRecord" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay registros de salud registrados.</p>
+}
+
+@code {
+    // Lista de registros de salud
+    List<HealthRecordsEntity> healthRecordList = new List<HealthRecordsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de registros de salud de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de registros de salud
+        healthRecordList = await Task.Run(() => HealthRecordsLog.HealthRecordList());
+    }
+}

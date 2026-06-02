@@ -1,0 +1,92 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Venta</h3>
+
+<EditForm Model="objSale" OnValidSubmit="UpdateSale" FormName="FrmSale">
+    <div>
+        <label>Animal:</label>
+        <InputSelect @bind-Value="objSale.IdAnimal">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var animal in animals)
+                {
+                    <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Nombre del Comprador:</label>
+        <InputText @bind-Value="objSale.BuyerName" />
+    </div>
+    <div>
+        <label>Fecha de Venta:</label>
+        <InputDate @bind-Value="objSale.SaleDate" />
+    </div>
+    <div>
+        <label>Precio:</label>
+        <InputNumber @bind-Value="objSale.Price" />
+    </div>
+    <div>
+        <label>Notas:</label>
+        <InputTextArea @bind-Value="objSale.Notes" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia de la venta que se está actualizando
+    SalesEntity objSale = new SalesEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de animales disponibles para seleccionar
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    
+    // ID de la venta a actualizar
+    [Parameter] public int Id { get; set; }
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la venta a actualizar y la lista de animales.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de ventas y animales
+        var saleList = await Task.Run(() => SalesLog.SaleList());
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        objSale = saleList.FirstOrDefault(s => s.IdSale == Id) ?? new SalesEntity();
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza la venta en la base de datos.
+     */
+    private void UpdateSale()
+    {
+        try
+        {
+            // Llama al método para actualizar la venta en la capa lógica
+            SalesLog.UpdateSale(objSale);
+            // Muestra un mensaje de éxito
+            successMessage = $"La venta del animal '{objSale?.Animal?.EarringCode}' se actualizó exitosamente!";
+            
+            //Redirecciona a la lista
+            NavManager.NavigateTo("sale/list");
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar la venta: {ex.Message}";
+        }
+    }
+}

@@ -1,0 +1,10 @@
+UpdateHealthRecordPage.razor
+@page "/healthrecord/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Registro de Salud</h3>
+<UpdateHealthRecordComponent Id="@Id.ToString()"></UpdateHealthRecordComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

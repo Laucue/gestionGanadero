@@ -1,0 +1,10 @@
+@page "/location/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Ubicación</h3>
+<UpdateLocationComponent Id="@Id"></UpdateLocationComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}
+

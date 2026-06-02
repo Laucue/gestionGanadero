@@ -1,0 +1,58 @@
+
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Items de Dieta</h3>
+
+<div>
+    <a href="dietitem/create" class="btn btn-primary">Crear Nuevo Item de Dieta</a>
+</div>
+
+@if (dietItemList != null && dietItemList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Dieta</th>
+            <th>Alimento</th>
+            <th>Cantidad Diaria (Kg)</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var dietItem in dietItemList)
+        {
+            <tr>
+                <td>@dietItem.IdItem</td>
+                <td>@(dietItem.Diet?.Name ?? "N/A")</td>
+                <td>@dietItem.Food</td>
+                <td>@dietItem.DailyAmountKg</td>
+                <td>
+                    <a href="dietitem/update/@dietItem.IdItem" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay items de dieta registrados.</p>
+}
+
+@code {
+    // Lista de items de dieta
+    List<DietItemsEntity> dietItemList = new List<DietItemsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de items de dieta de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de items de dieta
+        dietItemList = await Task.Run(() => DietItemsLog.DietItemList());
+    }
+}

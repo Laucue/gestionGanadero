@@ -1,0 +1,58 @@
+ListDietComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Dietas</h3>
+
+<div>
+    <a href="diet/create" class="btn btn-primary">Crear Nueva Dieta</a>
+</div>
+
+@if (dietList != null && dietList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Plan de Alimentación</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var diet in dietList)
+        {
+            <tr>
+                <td>@diet.IdDiet</td>
+                <td>@diet.Name</td>
+                <td>@(diet.FeedingPlan?.Name ?? "N/A")</td>
+                <td>@diet.Description</td>
+                <td>
+                    <a href="diet/update/@diet.IdDiet" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay dietas registradas.</p>
+}
+
+@code {
+    // Lista de dietas
+    List<DietsEntity> dietList = new List<DietsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de dietas de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de dietas
+        dietList = await Task.Run(() => DietsLog.DietList());
+    }
+}

@@ -1,0 +1,10 @@
+@page "/species/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Especie</h3>
+<UpdateSpeciesComponent Id="@Id"></UpdateSpeciesComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}
+

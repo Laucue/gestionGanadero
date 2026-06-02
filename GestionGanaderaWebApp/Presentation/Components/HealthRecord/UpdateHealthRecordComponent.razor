@@ -1,0 +1,190 @@
+UpdateHealthRecordComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Editar Registro de Salud</h3>
+
+@if (loading)
+{
+    <p>Cargando...</p>
+}
+else if (objHealthRecord == null)
+{
+    <p>Registro de salud no encontrado.</p>
+}
+else
+{
+    <EditForm Model="objHealthRecord" OnValidSubmit="UpdateHealthRecord" FormName="FrmHealthRecordUpdate">
+        <div>
+            <label>Animal:</label>
+            <InputSelect @bind-Value="objHealthRecord.IdAnimal">
+                <option value="">Seleccione</option>
+                @if (animals != null)
+                {
+                    @foreach (var animal in animals)
+                    {
+                        <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Tipo de Evento:</label>
+            <InputSelect @bind-Value="objHealthRecord.EventType">
+                <option value="">Seleccione</option>
+                <option value="VACCINE">VACCINE</option>
+                <option value="TREATMENT">TREATMENT</option>
+                <option value="DISEASE">DISEASE</option>
+                <option value="CHECKUP">CHECKUP</option>
+            </InputSelect>
+        </div>
+        <div>
+            <label>Fecha del Evento:</label>
+            <InputDate @bind-Value="objHealthRecord.EventDate" />
+        </div>
+        <div>
+            <label>Diagnóstico:</label>
+            <InputTextArea @bind-Value="objHealthRecord.Diagnosis" />
+        </div>
+        <div>
+            <label>Tratamiento:</label>
+            <InputTextArea @bind-Value="objHealthRecord.Treatment" />
+        </div>
+        <div>
+            <label>Medicación:</label>
+            <InputText @bind-Value="objHealthRecord.Medication" />
+        </div>
+        <div>
+            <label>Dosis:</label>
+            <InputNumber @bind-Value="objHealthRecord.Dose" />
+        </div>
+        <div>
+            <label>Unidad de Dosis:</label>
+            <InputText @bind-Value="objHealthRecord.DoseUnit" />
+        </div>
+        <div>
+            <label>Veterinario:</label>
+            <InputText @bind-Value="objHealthRecord.Veterinarian" />
+        </div>
+        <div>
+            <label>Vacuna:</label>
+            <InputSelect @bind-Value="objHealthRecord.IdVaccine">
+                <option value="">Seleccione</option>
+                @if (vaccines != null)
+                {
+                    @foreach (var vaccine in vaccines)
+                    {
+                        <option value="@vaccine.IdVaccine">@vaccine.Name</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Lote:</label>
+            <InputText @bind-Value="objHealthRecord.Batch" />
+        </div>
+        <div>
+            <label>Próxima Fecha de Refuerzo:</label>
+            <InputDate @bind-Value="objHealthRecord.NextBoosterDate" />
+        </div>
+        <div>
+            <label>Notas:</label>
+            <InputTextArea @bind-Value="objHealthRecord.Notes" />
+        </div>
+        <button type="submit">Actualizar</button>
+        <button type="button" @onclick="Cancel">Cancelar</button>
+    </EditForm>
+
+    @if (successMessage != null)
+    {
+        <div>@successMessage</div>
+    }
+}
+
+@code {
+    // Parámetro de ruta para el ID del registro de salud
+    [Parameter]
+    public string? Id { get; set; }
+    
+    // Instancia del registro de salud que se está editando
+    HealthRecordsEntity objHealthRecord = new HealthRecordsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Listas para los selects
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    List<VaccinesEntity> vaccines = new List<VaccinesEntity>();
+    
+    // Bandera para controlar el estado de carga
+    private bool loading = true;
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga las listas necesarias y el registro de salud específico.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de datos de referencia
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        vaccines = await Task.Run(() => VaccinesLog.VaccineList());
+        
+        // Carga el registro de salud si se proporcionó un ID
+        if (!string.IsNullOrEmpty(Id) && int.TryParse(Id, out int healthRecordId))
+        {
+            await LoadHealthRecord(healthRecordId);
+        }
+        else
+        {
+            loading = false;
+        }
+    }
+    
+    /*
+     * Carga un registro de salud específico por ID
+     */
+    private async Task LoadHealthRecord(int id)
+    {
+        try
+        {
+            var healthRecords = await Task.Run(() => HealthRecordsLog.HealthRecordList());
+            // Buscar por la propiedad ID correcta (asumiendo que es IdHealthRecord)
+            objHealthRecord = healthRecords.FirstOrDefault(hr => hr.IdHealthRecord == id);
+            loading = false;
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al cargar el registro de salud: {ex.Message}";
+            loading = false;
+        }
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza el registro de salud en la base de datos.
+     */
+    private void UpdateHealthRecord()
+    {
+        try
+        {
+            // Llama al método para actualizar un registro de salud en la capa lógica
+            HealthRecordsLog.UpdateHealthRecord(objHealthRecord);
+            // Muestra un mensaje de éxito
+            successMessage = "El registro de salud se actualizó exitosamente!";
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar el registro de salud: {ex.Message}";
+        }
+    }
+    
+    /*
+     * Método para cancelar la edición y regresar
+     */
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/healthrecords");
+    }
+}

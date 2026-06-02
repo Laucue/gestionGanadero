@@ -1,0 +1,56 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Medical Checkup</h3>
+
+<EditForm Model="obj" OnValidSubmit="Save" FormName="FrmCheckup">
+    <div>
+        <label>Animal:</label>
+        <InputSelect @bind-Value="obj.IdAnimal">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var a in animals)
+                {
+                    <option value="@a.IdAnimal">@a.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Notas:</label>
+        <InputText @bind-Value="obj.Notes" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    MedicalCheckupsEntity obj = new MedicalCheckupsEntity();
+    private string? successMessage;
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+    }
+
+    private void Save()
+    {
+        try
+        {
+            MedicalCheckupsLog.CreateMedicalCheckup(obj);
+            successMessage = $"El examen se guardó exitosamente!";
+            obj = new MedicalCheckupsEntity();
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al guardar el examen: {ex.Message}";
+        }
+    }
+}

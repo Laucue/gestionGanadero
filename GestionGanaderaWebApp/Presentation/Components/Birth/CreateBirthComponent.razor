@@ -1,0 +1,60 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Birth</h3>
+
+<EditForm Model="obj" OnValidSubmit="Save" FormName="FrmBirth">
+    <div>
+        <label>Madre (Animal):</label>
+        <InputSelect @bind-Value="obj.IdMother">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var a in animals)
+                {
+                    <option value="@a.IdAnimal">@a.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Fecha de nacimiento:</label>
+        <InputDate @bind-Value="obj.BirthDate" />
+    </div>
+    <div>
+        <label>Número de crías:</label>
+        <InputNumber @bind-Value="obj.NumberOfOffspring" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    BirthsEntity obj = new BirthsEntity();
+    private string? successMessage;
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+    }
+
+    private void Save()
+    {
+        try
+        {
+            BirthsLog.CreateBirth(obj);
+            successMessage = $"El parto se guardó exitosamente!";
+            obj = new BirthsEntity();
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al guardar el parto: {ex.Message}";
+        }
+    }
+}

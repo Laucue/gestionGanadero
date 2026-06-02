@@ -1,0 +1,10 @@
+@page "/breed/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Raza</h3>
+<UpdateBreedComponent Id="@Id"></UpdateBreedComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}
+

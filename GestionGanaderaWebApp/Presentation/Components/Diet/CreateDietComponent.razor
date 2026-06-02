@@ -1,0 +1,79 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Dieta</h3>
+
+<EditForm Model="objDiet" OnValidSubmit="SaveDiet" FormName="FrmDiet">
+    <div>
+        <label>Plan de Alimentación:</label>
+        <InputSelect @bind-Value="objDiet.IdPlan">
+            <option value="">Seleccione</option>
+            @if (feedingPlans != null)
+            {
+                @foreach (var plan in feedingPlans)
+                {
+                    <option value="@plan.IdPlan">@plan.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objDiet.Name" />
+    </div>
+    <div>
+        <label>Descripción:</label>
+        <InputTextArea @bind-Value="objDiet.Description" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia de la dieta que se está creando
+    DietsEntity objDiet = new DietsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de planes de alimentación disponibles para seleccionar
+    List<FeedingPlansEntity> feedingPlans = new List<FeedingPlansEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de planes de alimentación de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de planes de alimentación
+        feedingPlans = await Task.Run(() => FeedingPlansLog.FeedingPlanList());
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda la dieta en la base de datos.
+     */
+    private void SaveDiet()
+    {
+        try
+        {
+            // Llama al método para crear una dieta en la capa lógica
+            DietsLog.CreateDiet(objDiet);
+            // Muestra un mensaje de éxito
+            successMessage = $"La dieta '{objDiet?.Name}' se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objDiet = new DietsEntity();
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar la dieta: {ex.Message}";
+        }
+    }
+}

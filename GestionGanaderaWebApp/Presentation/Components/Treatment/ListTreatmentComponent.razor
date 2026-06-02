@@ -1,0 +1,27 @@
+@using Model
+@using Logic
+
+<h3>Treatments</h3>
+
+@if (items is null || items.Count == 0)
+{
+    <p>No treatments found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var t in items)
+        {
+            <li>@t.Description (@t.IdTreatment)</li>
+        }
+    </ul>
+}
+
+@code {
+    List<TreatmentsEntity> items = new List<TreatmentsEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await Task.Run(() => TreatmentsLog.TreatmentList());
+    }
+}

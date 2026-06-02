@@ -1,0 +1,41 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Disease</h3>
+
+<EditForm Model="obj" OnValidSubmit="Save" FormName="FrmDisease">
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="obj.Name" />
+    </div>
+    <div>
+        <label>Síntomas:</label>
+        <InputText @bind-Value="obj.Symptoms" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    DiseasesEntity obj = new DiseasesEntity();
+    private string? successMessage;
+
+    private void Save()
+    {
+        try
+        {
+            DiseasesLog.CreateDisease(obj);
+            successMessage = $"La enfermedad '{obj?.Name}' se guardó exitosamente!";
+            obj = new DiseasesEntity();
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al guardar la enfermedad: {ex.Message}";
+        }
+    }
+}

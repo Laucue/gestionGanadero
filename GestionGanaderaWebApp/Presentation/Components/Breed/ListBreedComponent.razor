@@ -1,0 +1,56 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Razas</h3>
+
+<div>
+    <a href="breed/create" class="btn btn-primary">Crear Nueva Raza</a>
+</div>
+
+@if (breedList != null && breedList.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Especie</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var breed in breedList)
+            {
+                <tr>
+                    <td>@breed.IdBreed</td>
+                    <td>@(breed.SpeciesEntity?.Name ?? "N/A")</td>
+                    <td>@breed.Name</td>
+                    <td>
+                        <a href="breed/update/@breed.IdBreed" class="btn btn-secondary">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay razas registradas.</p>
+}
+
+@code {
+    // Lista de razas
+    List<BreedsEntity> breedList = new List<BreedsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de razas de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de razas
+        breedList = await Task.Run(() => BreedsLog.BreedList());
+    }
+}
+

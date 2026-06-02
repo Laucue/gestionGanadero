@@ -1,0 +1,9 @@
+@page "/user/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Usuario</h3>
+<UpdateUserComponent Id="@Id"></UpdateUserComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

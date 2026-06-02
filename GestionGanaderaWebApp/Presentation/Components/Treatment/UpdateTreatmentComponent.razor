@@ -1,0 +1,44 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Treatment</h3>
+
+<EditForm Model="obj" OnValidSubmit="Update" FormName="FrmTreatment">
+    <div>
+        <label>Descripción:</label>
+        <InputText @bind-Value="obj.Description" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    TreatmentsEntity obj = new TreatmentsEntity();
+    private string? successMessage;
+    [Parameter] public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var list = await Task.Run(() => TreatmentsLog.TreatmentList());
+        obj = list.FirstOrDefault(x => x.IdTreatment == Id) ?? new TreatmentsEntity();
+    }
+
+    private void Update()
+    {
+        try
+        {
+            TreatmentsLog.UpdateTreatment(obj);
+            successMessage = $"El treatment se actualizó exitosamente!";
+            NavManager.NavigateTo("treatment/list");
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al actualizar el treatment: {ex.Message}";
+        }
+    }
+}

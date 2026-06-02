@@ -1,0 +1,64 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Animales</h3>
+
+<div>
+    <a href="animal/create" class="btn btn-primary">Crear Nuevo Animal</a>
+</div>
+
+@if (animalList != null && animalList.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Código Arete</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Sexo</th>
+                <th>Estado</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animal in animalList)
+            {
+                <tr>
+                    <td>@animal.IdAnimal</td>
+                    <td>@animal.EarringCode</td>
+                    <td>@(animal.Species?.Name ?? "N/A")</td>
+                    <td>@(animal.Breed?.Name ?? "N/A")</td>
+                    <td>@animal.Sex</td>
+                    <td>@animal.Status</td>
+                    <td>@(animal.Location?.Name ?? "N/A")</td>
+                    <td>
+                        <a href="animal/update/@animal.IdAnimal" class="btn btn-secondary">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay animales registrados.</p>
+}
+
+@code {
+    // Lista de animales
+        List<AnimalsEntity> animalList = new List<AnimalsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de animales de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de animales
+            animalList = await Task.Run(() => AnimalsLog.AnimalList());
+    }
+}
+

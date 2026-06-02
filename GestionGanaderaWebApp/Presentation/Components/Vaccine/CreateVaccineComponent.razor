@@ -1,0 +1,61 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Vacuna</h3>
+
+<EditForm Model="objVaccine" OnValidSubmit="SaveVaccine" FormName="FrmVaccine">
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objVaccine.Name" />
+    </div>
+    <div>
+        <label>Fabricante:</label>
+        <InputText @bind-Value="objVaccine.Manufacturer" />
+    </div>
+    <div>
+        <label>Dosis por Defecto (ml):</label>
+        <InputNumber @bind-Value="objVaccine.DefaultDoseMl" />
+    </div>
+    <div>
+        <label>Días hasta Refuerzo:</label>
+        <InputNumber @bind-Value="objVaccine.BoosterDays" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia de la vacuna que se está creando
+    VaccinesEntity objVaccine = new VaccinesEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda la vacuna en la base de datos.
+     */
+    private void SaveVaccine()
+    {
+        try
+        {
+            // Llama al método para crear una vacuna en la capa lógica
+            VaccinesLog.CreateVaccine(objVaccine);
+            // Muestra un mensaje de éxito
+            successMessage = $"La vacuna '{objVaccine?.Name}' se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objVaccine = new VaccinesEntity();
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar la vacuna: {ex.Message}";
+        }
+    }
+}

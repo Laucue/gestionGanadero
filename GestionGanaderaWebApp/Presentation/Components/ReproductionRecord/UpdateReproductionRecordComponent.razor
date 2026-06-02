@@ -1,0 +1,170 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Editar Registro de Reproducción</h3>
+
+@if (loading)
+{
+    <p>Cargando...</p>
+}
+else if (objReproductionRecord == null)
+{
+    <p>Registro de reproducción no encontrado.</p>
+}
+else
+{
+    <EditForm Model="objReproductionRecord" OnValidSubmit="UpdateReproductionRecord" FormName="FrmReproductionRecordUpdate">
+        <div>
+            <label>Animal:</label>
+            <InputSelect @bind-Value="objReproductionRecord.IdAnimal">
+                <option value="">Seleccione</option>
+                @if (animals != null)
+                {
+                    @foreach (var animal in animals)
+                    {
+                        <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Tipo de Evento:</label>
+            <InputSelect @bind-Value="objReproductionRecord.EventType">
+                <option value="">Seleccione</option>
+                <option value="HEAT">HEAT</option>
+                <option value="INSEMINATION">INSEMINATION</option>
+                <option value="PREGNANCY_CHECK">PREGNANCY_CHECK</option>
+                <option value="BIRTH">BIRTH</option>
+            </InputSelect>
+        </div>
+        <div>
+            <label>Fecha del Evento:</label>
+            <InputDate @bind-Value="objReproductionRecord.EventDate" />
+        </div>
+        <div>
+            <label>Compañero:</label>
+            <InputSelect @bind-Value="objReproductionRecord.IdPartner">
+                <option value="">Seleccione</option>
+                @if (animals != null)
+                {
+                    @foreach (var animal in animals)
+                    {
+                        <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Método:</label>
+            <InputSelect @bind-Value="objReproductionRecord.Method">
+                <option value="">Seleccione</option>
+                <option value="NATURAL">NATURAL</option>
+                <option value="AI">AI</option>
+            </InputSelect>
+        </div>
+        <div>
+            <label>Resultado:</label>
+            <InputText @bind-Value="objReproductionRecord.Result" />
+        </div>
+        <div>
+            <label>Cantidad de Crías:</label>
+            <InputNumber @bind-Value="objReproductionRecord.OffspringCount" />
+        </div>
+        <div>
+            <label>Notas:</label>
+            <InputTextArea @bind-Value="objReproductionRecord.Notes" />
+        </div>
+        <button type="submit">Actualizar</button>
+        <button type="button" @onclick="Cancel">Cancelar</button>
+    </EditForm>
+
+    @if (successMessage != null)
+    {
+        <div>@successMessage</div>
+    }
+}
+
+@code {
+    // Parámetro de ruta para el ID del registro de reproducción
+    [Parameter]
+    public string Id { get; set; }
+    
+    // Instancia del registro de reproducción que se está editando
+    BreedingRecordsEntity objReproductionRecord = new BreedingRecordsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de animales disponibles para seleccionar
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    
+    // Bandera para controlar el estado de carga
+    private bool loading = true;
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de animales y el registro de reproducción específico.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de animales
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        
+        // Carga el registro de reproducción si se proporcionó un ID
+        if (!string.IsNullOrEmpty(Id) && int.TryParse(Id, out int reproductionRecordId))
+        {
+            await LoadReproductionRecord(reproductionRecordId);
+        }
+        else
+        {
+            loading = false;
+        }
+    }
+    
+    /*
+     * Carga un registro de reproducción específico por ID
+     */
+    private async Task LoadReproductionRecord(int id)
+    {
+        try
+        {
+            var reproductionRecords = await Task.Run(() => BreedingRecordsLog.ReproductionRecordList());
+            objReproductionRecord = reproductionRecords.FirstOrDefault(rr => rr.IdReproductionRecord == id);
+            loading = false;
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al cargar el registro de reproducción: {ex.Message}";
+            loading = false;
+        }
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza el registro de reproducción en la base de datos.
+     */
+    private void UpdateReproductionRecord()
+    {
+        try
+        {
+            // Llama al método para actualizar un registro de reproducción en la capa lógica
+            BreedingRecordsLog.UpdateReproductionRecord(objReproductionRecord);
+            // Muestra un mensaje de éxito
+            successMessage = "El registro de reproducción se actualizó exitosamente!";
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar el registro de reproducción: {ex.Message}";
+        }
+    }
+    
+    /*
+     * Método para cancelar la edición y regresar
+     */
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/reproductionrecords");
+    }
+}

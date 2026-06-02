@@ -1,0 +1,9 @@
+@page "/buyer/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Buyer</h3>
+<UpdateBuyerComponent Id="@Id"></UpdateBuyerComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

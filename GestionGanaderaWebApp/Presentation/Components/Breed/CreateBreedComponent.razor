@@ -1,0 +1,75 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Raza</h3>
+
+<EditForm Model="objBreed" OnValidSubmit="SaveBreed" FormName="FrmBreed">
+    <div>
+        <label>Especie:</label>
+        <InputSelect @bind-Value="objBreed.IdSpecies">
+            <option value="">Seleccione</option>
+            @if (species != null)
+            {
+                @foreach (var s in species)
+                {
+                    <option value="@s.IdSpecies">@s.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objBreed.Name" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia de la raza que se está creando
+    BreedsEntity objBreed = new BreedsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de especies disponibles para seleccionar
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de especies de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de especies
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda la raza en la base de datos.
+     */
+    private void SaveBreed()
+    {
+        try
+        {
+            // Llama al método para crear una raza en la capa lógica
+            BreedsLog.CreateBreed(objBreed);
+            // Muestra un mensaje de éxito
+            successMessage = $"La raza '{objBreed?.Name}' se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objBreed = new BreedsEntity();
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar la raza: {ex.Message}";
+        }
+    }
+}

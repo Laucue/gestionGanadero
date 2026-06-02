@@ -1,0 +1,76 @@
+UpdateVaccineComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Vacuna</h3>
+
+<EditForm Model="objVaccine" OnValidSubmit="UpdateVaccine" FormName="FrmVaccine">
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objVaccine.Name" />
+    </div>
+    <div>
+        <label>Fabricante:</label>
+        <InputText @bind-Value="objVaccine.Manufacturer" />
+    </div>
+    <div>
+        <label>Dosis por Defecto (ml):</label>
+        <InputNumber @bind-Value="objVaccine.DefaultDoseMl" />
+    </div>
+    <div>
+        <label>Días hasta Refuerzo:</label>
+        <InputNumber @bind-Value="objVaccine.BoosterDays" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia de la vacuna que se está actualizando
+    VaccinesEntity objVaccine = new VaccinesEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // ID de la vacuna a actualizar
+    [Parameter] public int Id { get; set; }
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la vacuna a actualizar.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga la lista de vacunas y encuentra la que coincide con el ID
+        var vaccineList = await Task.Run(() => VaccinesLog.VaccineList());
+        objVaccine = vaccineList.FirstOrDefault(v => v.IdVaccine == Id) ?? new VaccinesEntity();
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza la vacuna en la base de datos.
+     */
+    private void UpdateVaccine()
+    {
+        try
+        {
+            // Llama al método para actualizar la vacuna en la capa lógica
+            VaccinesLog.UpdateVaccine(objVaccine);
+            // Muestra un mensaje de éxito
+            successMessage = $"La vacuna '{objVaccine?.Name}' se actualizó exitosamente!";
+            
+            //Redirecciona a la lista
+            NavManager.NavigateTo("vaccine/list");
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar la vacuna: {ex.Message}";
+        }
+    }
+}

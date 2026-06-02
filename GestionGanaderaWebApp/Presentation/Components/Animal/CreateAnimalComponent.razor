@@ -1,0 +1,293 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<div class="animal-form-container">
+    <h3>Crear Animal</h3>
+    <p class="subtitle">Completa los detalles del nuevo animal.</p>
+
+    <EditForm Model="objAnimal" OnValidSubmit="SaveAnimal" FormName="FrmAnimal">
+        <div class="form-grid">
+            <!-- Primera columna -->
+            <div class="form-column">
+                <div class="form-group">
+                    <label class="form-label">Código de Anteo:</label>
+                    <InputText @bind-Value="objAnimal.EarringCode" class="form-input" placeholder="Ef 12345" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Especie:</label>
+                    <div class="selected-value">Bovino</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Raza:</label>
+                    <InputSelect @bind-Value="objAnimal.IdBreed" class="form-select">
+                        <option value="">Seleccione una raza</option>
+                        @if (breeds != null)
+                        {
+                        @foreach (var breed in breeds)
+                        {
+                        <option value="@breed.IdBreed">@breed.Name</option>
+                        }
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Sexo:</label>
+                    <InputSelect @bind-Value="objAnimal.Sex" class="form-select">
+                        <option value="">Seleccione el sexo</option>
+                        <option value="M">Macho (M)</option>
+                        <option value="F">Hembra (F)</option>
+                        <option value="I">Indefinido (I)</option>
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Fecha de Inscribente:</label>
+                    <InputDate @bind-Value="objAnimal.BirthDate" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Estado:</label>
+                    <div class="status-active">Activo</div>
+                </div>
+            </div>
+
+            <!-- Segunda columna -->
+            <div class="form-column">
+                <div class="form-group">
+                    <label class="form-label">Color:</label>
+                    <InputText @bind-Value="objAnimal.Color" class="form-input" placeholder="Negro y blanco" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ubicación:</label>
+                    <InputSelect @bind-Value="objAnimal.IdLocation" class="form-select">
+                        <option value="">Seleccione una ubicación</option>
+                        @if (locations != null)
+                        {
+                        @foreach (var location in locations)
+                        {
+                        <option value="@location.IdLocation">@location.Name</option>
+                        }
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Padre:</label>
+                    <InputSelect @bind-Value="objAnimal.IdFather" class="form-select">
+                        <option value="">Seleccione el padre</option>
+                        @if (animals != null)
+                        {
+                        @foreach (var animal in animals)
+                        {
+                        <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                        }
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Madre:</label>
+                    <InputSelect @bind-Value="objAnimal.IdMother" class="form-select">
+                        <option value="">Seleccione la madre</option>
+                        @if (animals != null)
+                        {
+                        @foreach (var animal in animals)
+                        {
+                        <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                        }
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Notas:</label>
+                    <InputTextArea @bind-Value="objAnimal.Notes" class="form-textarea" placeholder="Añadir observaciones adicionales..." />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+    </EditForm>
+
+    @if (successMessage != null)
+    {
+    <div class="alert alert-success">@successMessage</div>
+    }
+</div>
+
+<style>
+    .animal-form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h3 {
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        color: #7f8c8d;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-column {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #2c3e50;
+        font-size: 14px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+        padding: 8px 12px;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    .form-textarea {
+        min-height: 80px;
+        resize: vertical;
+    }
+
+    .selected-value {
+        padding: 8px 12px;
+        background-color: #ecf0f1;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #2c3e50;
+    }
+
+    .status-active {
+        padding: 8px 12px;
+        background-color: #d4edda;
+        color: #155724;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .form-actions {
+        margin-top: 25px;
+        text-align: right;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+    }
+
+    .alert {
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-top: 15px;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    @@media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+@code {
+// Instancia del animal que se está creando
+AnimalsEntity objAnimal = new AnimalsEntity();
+
+// Mensaje para indicar el resultado de la operación
+private string? successMessage;
+
+// Listas para los selects
+List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+List<BreedsEntity> breeds = new List<BreedsEntity>();
+List<LocationsEntity> locations = new List<LocationsEntity>();
+List<AnimalsEntity> animals = new List<AnimalsEntity>();
+
+/*
+ * Método que se ejecuta al inicializar el componente.
+ * Carga las listas necesarias de forma asíncrona.
+ */
+protected override async Task OnInitializedAsync()
+{
+// Carga asíncrona de datos
+species = await Task.Run(() => PastureTypesLog.SpeciesList());
+breeds = await Task.Run(() => BreedsLog.BreedList());
+locations = await Task.Run(() => LocationsLog.LocationList());
+animals = await Task.Run(() => AnimalsLog.AnimalList());
+objAnimal.Status = "ACTIVE";
+}
+
+/*
+ * Método que se ejecuta al enviar el formulario.
+ * Guarda el animal en la base de datos.
+ */
+private void SaveAnimal()
+{
+try
+{
+// Llama al método para crear un animal en la capa lógica
+AnimalsLog.CreateAnimal(objAnimal);
+// Muestra un mensaje de éxito
+successMessage = $"El animal '{objAnimal?.EarringCode}' se guardó exitosamente!";
+
+// Reinicia el formulario para un nuevo registro
+objAnimal = new AnimalsEntity();
+objAnimal.Status = "ACTIVE";
+}
+catch (Exception ex)
+{
+// Muestra el mensaje de error en caso de excepción
+successMessage = $"Error al guardar el animal: {ex.Message}";
+}
+}
+}

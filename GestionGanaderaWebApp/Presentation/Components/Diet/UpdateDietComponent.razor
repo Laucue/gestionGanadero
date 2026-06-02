@@ -1,0 +1,85 @@
+UpdateDietComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Dieta</h3>
+
+<EditForm Model="objDiet" OnValidSubmit="UpdateDiet" FormName="FrmDiet">
+    <div>
+        <label>Plan de Alimentación:</label>
+        <InputSelect @bind-Value="objDiet.IdPlan">
+            <option value="">Seleccione</option>
+            @if (feedingPlans != null)
+            {
+                @foreach (var plan in feedingPlans)
+                {
+                    <option value="@plan.IdPlan">@plan.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objDiet.Name" />
+    </div>
+    <div>
+        <label>Descripción:</label>
+        <InputTextArea @bind-Value="objDiet.Description" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia de la dieta que se está actualizando
+    DietsEntity objDiet = new DietsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de planes de alimentación disponibles para seleccionar
+    List<FeedingPlansEntity> feedingPlans = new List<FeedingPlansEntity>();
+    
+    // ID de la dieta a actualizar
+    [Parameter] public int Id { get; set; }
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la dieta a actualizar y la lista de planes de alimentación.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de dietas y planes de alimentación
+        var dietList = await Task.Run(() => DietsLog.DietList());
+        feedingPlans = await Task.Run(() => FeedingPlansLog.FeedingPlanList());
+        objDiet = dietList.FirstOrDefault(d => d.IdDiet == Id) ?? new DietsEntity();
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza la dieta en la base de datos.
+     */
+    private void UpdateDiet()
+    {
+        try
+        {
+            // Llama al método para actualizar la dieta en la capa lógica
+            DietsLog.UpdateDiet(objDiet);
+            // Muestra un mensaje de éxito
+            successMessage = $"La dieta '{objDiet?.Name}' se actualizó exitosamente!";
+            
+            //Redirecciona a la lista
+            NavManager.NavigateTo("diet/list");
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar la dieta: {ex.Message}";
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@page "/birth/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Birth</h3>
+<UpdateBirthComponent Id="@Id"></UpdateBirthComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

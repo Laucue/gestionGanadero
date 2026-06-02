@@ -1,0 +1,9 @@
+@page "/disease/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Disease</h3>
+<UpdateDiseaseComponent Id="@Id"></UpdateDiseaseComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

@@ -1,0 +1,9 @@
+@page "/medicalcheckup/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Medical Checkup</h3>
+<UpdateMedicalCheckupComponent Id="@Id"></UpdateMedicalCheckupComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

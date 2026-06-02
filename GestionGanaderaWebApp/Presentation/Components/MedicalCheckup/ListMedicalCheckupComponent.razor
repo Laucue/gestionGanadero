@@ -1,0 +1,27 @@
+@using Model
+@using Logic
+
+<h3>Medical Checkups</h3>
+
+@if (items is null || items.Count == 0)
+{
+    <p>No checkups found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var m in items)
+        {
+            <li>@m.IdMedicalCheckup - @m.CheckupDate</li>
+        }
+    </ul>
+}
+
+@code {
+    List<MedicalCheckupsEntity> items = new List<MedicalCheckupsEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await Task.Run(() => MedicalCheckupsLog.MedicalCheckupList());
+    }
+}

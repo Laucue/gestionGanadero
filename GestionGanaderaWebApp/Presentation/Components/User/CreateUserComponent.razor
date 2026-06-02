@@ -1,0 +1,87 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Usuario</h3>
+
+<EditForm Model="objUser" OnValidSubmit="SaveUser" FormName="FrmUser">
+    <div>
+        <label>Nombre Completo:</label>
+        <InputText @bind-Value="objUser.FullName" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <InputText @bind-Value="objUser.Email" />
+    </div>
+    <div>
+        <label>Teléfono:</label>
+        <InputText @bind-Value="objUser.Phone" />
+    </div>
+    <div>
+        <label>Contraseña (Hash):</label>
+        <InputText @bind-Value="objUser.PasswordHash" />
+    </div>
+    <div>
+        <label>Rol:</label>
+        <InputSelect @bind-Value="objUser.IdRole">
+            <option value="">Seleccione</option>
+            @if (roles != null)
+            {
+                @foreach (var role in roles)
+                {
+                    <option value="@role.IdRole">@role.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia del usuario que se está creando
+    UsersEntity objUser = new UsersEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de roles disponibles para seleccionar
+    List<RolesEntity> roles = new List<RolesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de roles de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de roles
+        roles = await Task.Run(() => RolesLog.RoleList());
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda el usuario en la base de datos.
+     */
+    private void SaveUser()
+    {
+        try
+        {
+            // Llama al método para crear un usuario en la capa lógica
+            UsersLog.CreateUser(objUser);
+            // Muestra un mensaje de éxito
+            successMessage = $"El usuario '{objUser?.FullName}' se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objUser = new UsersEntity();
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar el usuario: {ex.Message}";
+        }
+    }
+}

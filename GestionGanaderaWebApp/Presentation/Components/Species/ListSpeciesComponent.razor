@@ -1,0 +1,54 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Especies</h3>
+
+<div>
+    <a href="species/create" class="btn btn-primary">Crear Nueva Especie</a>
+</div>
+
+@if (speciesList != null && speciesList.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var species in speciesList)
+            {
+                <tr>
+                    <td>@species.IdSpecies</td>
+                    <td>@species.Name</td>
+                    <td>
+                        <a href="species/update/@species.IdSpecies" class="btn btn-secondary">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay especies registradas.</p>
+}
+
+@code {
+    // Lista de especies
+    List<PastureTypesEntity> speciesList = new List<PastureTypesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de especies de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de especies
+        speciesList = await Task.Run(() => PastureTypesLog.SpeciesList());
+    }
+}
+

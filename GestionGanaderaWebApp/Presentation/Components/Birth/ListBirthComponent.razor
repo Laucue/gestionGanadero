@@ -1,0 +1,27 @@
+@using Model
+@using Logic
+
+<h3>Births</h3>
+
+@if (items is null || items.Count == 0)
+{
+    <p>No births found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var b in items)
+        {
+            <li>@b.IdBirth - @b.BirthDate</li>
+        }
+    </ul>
+}
+
+@code {
+    List<BirthsEntity> items = new List<BirthsEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await Task.Run(() => BirthsLog.BirthList());
+    }
+}

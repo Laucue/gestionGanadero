@@ -1,0 +1,9 @@
+@page "/animal/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Animal</h3>
+<UpdateAnimalComponent Id="@Id" />
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

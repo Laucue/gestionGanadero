@@ -1,0 +1,92 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Registro de Auditoría</h3>
+
+<EditForm Model="objAuditLog" OnValidSubmit="UpdateAuditLog" FormName="FrmAuditLog">
+    <div>
+        <label>Usuario:</label>
+        <InputSelect @bind-Value="objAuditLog.IdUser">
+            <option value="">Seleccione</option>
+            @if (users != null)
+            {
+                @foreach (var user in users)
+                {
+                    <option value="@user.IdUser">@user.FullName</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Acción:</label>
+        <InputText @bind-Value="objAuditLog.Action" />
+    </div>
+    <div>
+        <label>Entidad:</label>
+        <InputText @bind-Value="objAuditLog.Entity" />
+    </div>
+    <div>
+        <label>ID de Entidad:</label>
+        <InputNumber @bind-Value="objAuditLog.EntityId" />
+    </div>
+    <div>
+        <label>Detalles:</label>
+        <InputTextArea @bind-Value="objAuditLog.Details" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia del registro de auditoría que se está actualizando
+        ActivityLogEntity objAuditLog = new ActivityLogEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de usuarios disponibles para seleccionar
+        List<UsersEntity> users = new List<UsersEntity>();
+    
+    // ID del registro de auditoría a actualizar
+    [Parameter] public int Id { get; set; }
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga el registro de auditoría a actualizar y la lista de usuarios.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de registros de auditoría y usuarios
+            var auditLogList = await Task.Run(() => ActivityLogLog.AuditLogList());
+        users = await Task.Run(() => UsersLog.UserList());
+            objAuditLog = auditLogList.FirstOrDefault(a => a.IdAudit == Id) ?? new ActivityLogEntity();
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza el registro de auditoría en la base de datos.
+     */
+    private void UpdateAuditLog()
+    {
+        try
+        {
+            // Llama al método para actualizar el registro de auditoría en la capa lógica
+                ActivityLogLog.UpdateAuditLog(objAuditLog);
+            // Muestra un mensaje de éxito
+            successMessage = "El registro de auditoría se actualizó exitosamente!";
+            
+            //Redirecciona a la lista
+            NavManager.NavigateTo("auditlog/list");
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar el registro de auditoría: {ex.Message}";
+        }
+    }
+}

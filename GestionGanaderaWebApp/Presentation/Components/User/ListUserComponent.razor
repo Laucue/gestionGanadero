@@ -1,0 +1,59 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Usuarios</h3>
+
+<div>
+    <a href="user/create" class="btn btn-primary">Crear Nuevo Usuario</a>
+</div>
+
+@if (userList != null && userList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in userList)
+        {
+            <tr>
+                <td>@user.IdUser</td>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Phone</td>
+                <td>@(user.Role?.Name ?? "Sin rol")</td>
+                <td>
+                    <a href="user/update/@user.IdUser" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay usuarios registrados.</p>
+}
+
+@code {
+    // Lista de usuarios
+    List<UsersEntity> userList = new List<UsersEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de usuarios de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de usuarios
+        userList = await Task.Run(() => UsersLog.UserList());
+    }
+}

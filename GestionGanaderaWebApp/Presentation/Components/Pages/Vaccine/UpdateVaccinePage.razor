@@ -1,0 +1,10 @@
+UpdateVaccinePage.razor
+@page "/vaccine/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Vacuna</h3>
+<UpdateVaccineComponent Id="@Id"></UpdateVaccineComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

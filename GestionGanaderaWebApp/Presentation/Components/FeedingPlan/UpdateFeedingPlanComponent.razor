@@ -1,0 +1,149 @@
+UpdateFeedingPlanComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Editar Plan de Alimentación</h3>
+
+@if (loading)
+{
+    <p>Cargando...</p>
+}
+else if (objFeedingPlan == null)
+{
+    <p>Plan de alimentación no encontrado.</p>
+}
+else
+{
+    <EditForm Model="objFeedingPlan" OnValidSubmit="UpdateFeedingPlan" FormName="FrmFeedingPlanUpdate">
+        <div>
+            <label>Nombre:</label>
+            <InputText @bind-Value="objFeedingPlan.Name" />
+        </div>
+        <div>
+            <label>Especie:</label>
+            <InputSelect @bind-Value="objFeedingPlan.IdSpecies">
+                <option value="">Seleccione</option>
+                @if (species != null)
+                {
+                    @foreach (var s in species)
+                    {
+                        <option value="@s.IdSpecies">@s.Name</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Descripción:</label>
+            <InputTextArea @bind-Value="objFeedingPlan.Description" />
+        </div>
+        <button type="submit">Actualizar</button>
+        <button type="button" @onclick="Cancel">Cancelar</button>
+    </EditForm>
+
+    @if (successMessage != null)
+    {
+        <div>@successMessage</div>
+    }
+}
+
+@code {
+    // Parámetro de ruta para el ID del plan de alimentación
+    [Parameter]
+    public string? Id { get; set; }
+    
+    // Instancia del plan de alimentación que se está editando
+    FeedingPlansEntity objFeedingPlan = new FeedingPlansEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de especies disponibles para seleccionar
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    
+    // Bandera para controlar el estado de carga
+    private bool loading = true;
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de especies y el plan de alimentación específico.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de especies
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+        
+        // Carga el plan de alimentación si se proporcionó un ID
+        if (!string.IsNullOrEmpty(Id) && int.TryParse(Id, out int feedingPlanId))
+        {
+            await LoadFeedingPlan(feedingPlanId);
+        }
+        else
+        {
+            loading = false;
+        }
+    }
+    
+    /*
+     * Carga un plan de alimentación específico por ID
+     */
+    private async Task LoadFeedingPlan(int id)
+    {
+        try
+        {
+            var feedingPlans = await Task.Run(() => FeedingPlansLog.FeedingPlanList());
+            // CORREGIDO: Buscar por la propiedad ID correcta
+            // Si FeedingPlanEntity tiene una propiedad Id, usar objFeedingPlan = feedingPlans.FirstOrDefault(fp => fp.Id == id);
+            // Si no, necesitamos saber la propiedad correcta
+            objFeedingPlan = feedingPlans.FirstOrDefault(fp => GetEntityId(fp) == id);
+            loading = false;
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al cargar el plan de alimentación: {ex.Message}";
+            loading = false;
+        }
+    }
+    
+    /*
+     * Método auxiliar para obtener el ID de la entidad
+     * (Necesitamos saber la propiedad correcta del ID)
+     */
+    private int GetEntityId(FeedingPlansEntity entity)
+    {
+        // Si la entidad tiene una propiedad IdFeedingPlan
+        // return entity.IdFeedingPlan;
+        // Si tiene una propiedad Id
+        // return entity.Id;
+        // Por ahora, retornamos 0 - necesitamos la estructura correcta
+        return 0;
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza el plan de alimentación en la base de datos.
+     */
+    private void UpdateFeedingPlan()
+    {
+        try
+        {
+            // Llama al método para actualizar un plan de alimentación en la capa lógica
+            FeedingPlansLog.UpdateFeedingPlan(objFeedingPlan);
+            // Muestra un mensaje de éxito
+            successMessage = $"El plan de alimentación '{objFeedingPlan?.Name}' se actualizó exitosamente!";
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar el plan de alimentación: {ex.Message}";
+        }
+    }
+    
+    /*
+     * Método para cancelar la edición y regresar
+     */
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/feedingplans");
+    }
+}

@@ -1,0 +1,79 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Plan de Alimentación</h3>
+
+<EditForm Model="objFeedingPlan" OnValidSubmit="SaveFeedingPlan" FormName="FrmFeedingPlan">
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objFeedingPlan.Name" />
+    </div>
+    <div>
+        <label>Especie:</label>
+        <InputSelect @bind-Value="objFeedingPlan.IdSpecies">
+            <option value="">Seleccione</option>
+            @if (species != null)
+            {
+                @foreach (var s in species)
+                {
+                    <option value="@s.IdSpecies">@s.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Descripción:</label>
+        <InputTextArea @bind-Value="objFeedingPlan.Description" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia del plan de alimentación que se está creando
+    FeedingPlansEntity objFeedingPlan = new FeedingPlansEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de especies disponibles para seleccionar
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de especies de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de especies
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda el plan de alimentación en la base de datos.
+     */
+    private void SaveFeedingPlan()
+    {
+        try
+        {
+            // Llama al método para crear un plan de alimentación en la capa lógica
+            FeedingPlansLog.CreateFeedingPlan(objFeedingPlan);
+            // Muestra un mensaje de éxito
+            successMessage = $"El plan de alimentación '{objFeedingPlan?.Name}' se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objFeedingPlan = new FeedingPlansEntity();
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar el plan de alimentación: {ex.Message}";
+        }
+    }
+}

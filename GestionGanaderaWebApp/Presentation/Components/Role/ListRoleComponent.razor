@@ -1,0 +1,55 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Roles</h3>
+
+<div>
+    <a href="role/create" class="btn btn-primary">Crear Nuevo Rol</a>
+</div>
+
+@if (roleList != null && roleList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Permisos</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var role in roleList)
+        {
+            <tr>
+                <td>@role.IdRole</td>
+                <td>@role.Name</td>
+                <td>@role.Permissions</td>
+                <td>
+                    <a href="role/update/@role.IdRole" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay roles registrados.</p>
+}
+
+@code {
+    // Lista de roles
+    List<RolesEntity> roleList = new List<RolesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de roles de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de roles
+    roleList = await Task.Run(() => RolesLog.RoleList());
+    }
+}

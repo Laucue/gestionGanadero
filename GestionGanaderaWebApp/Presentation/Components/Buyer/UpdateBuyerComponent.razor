@@ -1,0 +1,48 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Buyer</h3>
+
+<EditForm Model="objBuyer" OnValidSubmit="UpdateBuyer" FormName="FrmBuyer">
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objBuyer.Name" />
+    </div>
+    <div>
+        <label>Notas:</label>
+        <InputText @bind-Value="objBuyer.Notes" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    BuyersEntity objBuyer = new BuyersEntity();
+    private string? successMessage;
+    [Parameter] public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var list = await Task.Run(() => BuyersLog.BuyerList());
+        objBuyer = list.FirstOrDefault(b => b.IdBuyer == Id) ?? new BuyersEntity();
+    }
+
+    private void UpdateBuyer()
+    {
+        try
+        {
+            BuyersLog.UpdateBuyer(objBuyer);
+            successMessage = $"El buyer '{objBuyer?.Name}' se actualizó exitosamente!";
+            NavManager.NavigateTo("buyer/list");
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al actualizar el buyer: {ex.Message}";
+        }
+    }
+}

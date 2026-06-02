@@ -1,0 +1,27 @@
+@using Model
+@using Logic
+
+<h3>Buyers</h3>
+
+@if (buyers is null || buyers.Count == 0)
+{
+    <p>No buyers found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var b in buyers)
+        {
+            <li>@b.Name (@b.IdBuyer)</li>
+        }
+    </ul>
+}
+
+@code {
+    List<BuyersEntity> buyers = new List<BuyersEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        buyers = await Task.Run(() => BuyersLog.BuyerList());
+    }
+}

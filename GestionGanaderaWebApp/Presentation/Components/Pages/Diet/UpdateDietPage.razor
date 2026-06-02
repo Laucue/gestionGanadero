@@ -1,0 +1,10 @@
+UpdateDietPage
+@page "/diet/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Dieta</h3>
+<UpdateDietComponent Id="@Id"></UpdateDietComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

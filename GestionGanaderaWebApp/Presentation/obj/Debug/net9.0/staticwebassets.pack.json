@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Septimo Semestre\\Aplicaciones Web\\repo-sprint\\spprint5-sinDiseño\\scg-sistema-control-ganadero\\GestionGanaderaWebApp\\Presentation\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Presentation.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Presentation.n0erjre3r5.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Septimo Semestre\\Aplicaciones Web\\repo-sprint\\spprint5-sinDiseño\\scg-sistema-control-ganadero\\GestionGanaderaWebApp\\Presentation\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Septimo Semestre\\Aplicaciones Web\\repo-sprint\\spprint5-sinDiseño\\scg-sistema-control-ganadero\\GestionGanaderaWebApp\\Presentation\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Presentation.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Presentation.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.Presentation.props",
+      "PackagePath": "build\\Presentation.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.Presentation.props",
+      "PackagePath": "buildMultiTargeting\\Presentation.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.Presentation.props",
+      "PackagePath": "buildTransitive\\Presentation.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,9 @@
+@page "/feedingschedule/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Horario de Alimentación</h3>
+<UpdateFeedingScheduleComponent Id="@Id.ToString()"></UpdateFeedingScheduleComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

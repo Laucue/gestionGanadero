@@ -1,0 +1,103 @@
+   
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Registros de Reproducción</h3>
+
+@if (reproductionRecords == null)
+{
+    <p>Cargando...</p>
+}
+else if (!reproductionRecords.Any())
+{
+    <p>No hay registros de reproducción.</p>
+}
+else
+{
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Animal</th>
+                    <th>Tipo de Evento</th>
+                    <th>Fecha del Evento</th>
+                    <th>Compañero</th>
+                    <th>Método</th>
+                    <th>Resultado</th>
+                    <th>Crías</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var record in reproductionRecords)
+                {
+                    <tr>
+                        <td>@GetAnimalEarringCode(record.IdAnimal)</td>
+                        <td>@record.EventType</td>
+                        <td>@record.EventDate.ToString("yyyy-MM-dd")</td>
+                        <td>@GetPartnerEarringCode(record.IdPartner)</td>
+                        <td>@record.Method</td>
+                        <td>@record.Result</td>
+                        <td>@record.OffspringCount</td>
+                        <td>@record.Notes</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    // Lista de registros de reproducción
+    List<BreedingRecordsEntity> reproductionRecords = new List<BreedingRecordsEntity>();
+    
+    // Lista de animales disponibles
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de registros de reproducción y animales de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadReproductionRecords();
+        await LoadAnimals();
+    }
+    
+    /*
+     * Carga asíncrona de registros de reproducción
+     */
+    private async Task LoadReproductionRecords()
+    {
+        reproductionRecords = await Task.Run(() => BreedingRecordsLog.ReproductionRecordList());
+    }
+    
+    /*
+     * Carga asíncrona de animales
+     */
+    private async Task LoadAnimals()
+    {
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+    }
+    
+    /*
+     * Obtiene el código de arete del animal basado en el ID
+     */
+    private string GetAnimalEarringCode(int? idAnimal)
+    {
+        if (!idAnimal.HasValue) return "No asignado";
+        var animal = animals.FirstOrDefault(a => a.IdAnimal == idAnimal.Value);
+        return animal?.EarringCode ?? "Animal no encontrado";
+    }
+    
+    /*
+     * Obtiene el código de arete del compañero basado en el ID
+     */
+    private string GetPartnerEarringCode(int? idPartner)
+    {
+        if (!idPartner.HasValue) return "N/A";
+        var partner = animals.FirstOrDefault(a => a.IdAnimal == idPartner.Value);
+        return partner?.EarringCode ?? "Compañero no encontrado";
+    }
+}

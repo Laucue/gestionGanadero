@@ -1,0 +1,27 @@
+@using Model
+@using Logic
+
+<h3>Sale Details</h3>
+
+@if (items is null || items.Count == 0)
+{
+    <p>No sale details found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var s in items)
+        {
+            <li>@s.IdSaleDetail - @s.Amount</li>
+        }
+    </ul>
+}
+
+@code {
+    List<SaleDetailsEntity> items = new List<SaleDetailsEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await Task.Run(() => SaleDetailsLog.SaleDetailList());
+    }
+}

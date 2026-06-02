@@ -1,0 +1,164 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Animal</h3>
+
+<EditForm Model="objAnimal" OnValidSubmit="UpdateAnimal" FormName="FrmAnimal">
+    <div>
+        <label>Código de Arete:</label>
+        <InputText @bind-Value="objAnimal.EarringCode" />
+    </div>
+    <div>
+        <label>Especie:</label>
+        <InputSelect @bind-Value="objAnimal.IdSpecies">
+            <option value="">Seleccione</option>
+            @if (species != null)
+            {
+                @foreach (var s in species)
+                {
+                    <option value="@s.IdSpecies">@s.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Raza:</label>
+        <InputSelect @bind-Value="objAnimal.IdBreed">
+            <option value="">Seleccione</option>
+            @if (breeds != null)
+            {
+                @foreach (var breed in breeds)
+                {
+                    <option value="@breed.IdBreed">@breed.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Sexo:</label>
+        <InputSelect @bind-Value="objAnimal.Sex">
+            <option value="">Seleccione</option>
+            <option value="M">Macho (M)</option>
+            <option value="F">Hembra (F)</option>
+            <option value="I">Indefinido (I)</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label>Fecha de Nacimiento:</label>
+        <InputDate @bind-Value="objAnimal.BirthDate" />
+    </div>
+    <div>
+        <label>Estado:</label>
+        <InputText @bind-Value="objAnimal.Status" />
+    </div>
+    <div>
+        <label>Color:</label>
+        <InputText @bind-Value="objAnimal.Color" />
+    </div>
+    <div>
+        <label>Ubicación:</label>
+        <InputSelect @bind-Value="objAnimal.IdLocation">
+            <option value="">Seleccione</option>
+            @if (locations != null)
+            {
+                @foreach (var location in locations)
+                {
+                    <option value="@location.IdLocation">@location.Name</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Padre:</label>
+        <InputSelect @bind-Value="objAnimal.IdFather">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var animal in animals)
+                {
+                    <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Madre:</label>
+        <InputSelect @bind-Value="objAnimal.IdMother">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var animal in animals)
+                {
+                    <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Notas:</label>
+        <InputTextArea @bind-Value="objAnimal.Notes" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia del animal que se está actualizando
+    AnimalsEntity objAnimal = new AnimalsEntity();
+
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+
+    // Listas para los selects
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    List<BreedsEntity> breeds = new List<BreedsEntity>();
+    List<LocationsEntity> locations = new List<LocationsEntity>();
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+
+    // ID del animal a actualizar
+    [Parameter] public int Id { get; set; }
+
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga el animal a actualizar y las listas necesarias.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de datos
+        var animalList = await Task.Run(() => AnimalsLog.AnimalList());
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+        breeds = await Task.Run(() => BreedsLog.BreedList());
+        locations = await Task.Run(() => LocationsLog.LocationList());
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        objAnimal = animalList.FirstOrDefault(a => a.IdAnimal == Id) ?? new AnimalsEntity();
+    }
+
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza el animal en la base de datos.
+     */
+    private void UpdateAnimal()
+    {
+        try
+        {
+            // Llama al método para actualizar el animal en la capa lógica
+            AnimalsLog.UpdateAnimal(objAnimal);
+            // Muestra un mensaje de éxito
+            successMessage = $"El animal '{objAnimal?.EarringCode}' se actualizó exitosamente!";
+
+            //Redirecciona a la lista
+            NavManager.NavigateTo("animal/list");
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar el animal: {ex.Message}";
+        }
+    }
+}
+

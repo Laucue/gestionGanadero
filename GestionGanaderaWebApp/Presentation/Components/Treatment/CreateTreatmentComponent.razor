@@ -1,0 +1,37 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Treatment</h3>
+
+<EditForm Model="obj" OnValidSubmit="Save" FormName="FrmTreatment">
+    <div>
+        <label>Descripción:</label>
+        <InputText @bind-Value="obj.Description" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    TreatmentsEntity obj = new TreatmentsEntity();
+    private string? successMessage;
+
+    private void Save()
+    {
+        try
+        {
+            TreatmentsLog.CreateTreatment(obj);
+            successMessage = $"El treatment se guardó exitosamente!";
+            obj = new TreatmentsEntity();
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al guardar el treatment: {ex.Message}";
+        }
+    }
+}

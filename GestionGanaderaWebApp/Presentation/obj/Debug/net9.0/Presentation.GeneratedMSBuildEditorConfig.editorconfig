@@ -1,0 +1,569 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Presentation
+build_property.RootNamespace = Presentation
+build_property.ProjectDir = C:\Septimo Semestre\Aplicaciones Web\repo-sprint\spprint5-sinDiseño\scg-sistema-control-ganadero\GestionGanaderaWebApp\Presentation\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Septimo Semestre\Aplicaciones Web\repo-sprint\spprint5-sinDiseño\scg-sistema-control-ganadero\GestionGanaderaWebApp\Presentation
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Animal/CreateAnimalComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbmltYWxcQ3JlYXRlQW5pbWFsQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Animal/ListAnimalComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbmltYWxcTGlzdEFuaW1hbENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Animal/UpdateAnimalComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbmltYWxcVXBkYXRlQW5pbWFsQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/AuditLog/CreateAuditLogComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdWRpdExvZ1xDcmVhdGVBdWRpdExvZ0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/AuditLog/ListAuditLogComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdWRpdExvZ1xMaXN0QXVkaXRMb2dDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/AuditLog/UpdateAuditLogComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdWRpdExvZ1xVcGRhdGVBdWRpdExvZ0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Birth/CreateBirthComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCaXJ0aFxDcmVhdGVCaXJ0aENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Birth/ListBirthComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCaXJ0aFxMaXN0QmlydGhDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Birth/UpdateBirthComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCaXJ0aFxVcGRhdGVCaXJ0aENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Breed/CreateBreedComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCcmVlZFxDcmVhdGVCcmVlZENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Breed/ListBreedComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCcmVlZFxMaXN0QnJlZWRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Breed/UpdateBreedComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCcmVlZFxVcGRhdGVCcmVlZENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Buyer/CreateBuyerComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXllclxDcmVhdGVCdXllckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Buyer/ListBuyerComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXllclxMaXN0QnV5ZXJDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Buyer/UpdateBuyerComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXllclxVcGRhdGVCdXllckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/DietItem/CreateDietItemComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWV0SXRlbVxDcmVhdGVEaWV0SXRlbUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/DietItem/ListDietItemComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWV0SXRlbVxMaXN0RGlldEl0ZW1Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/DietItem/UpdateDietItemComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWV0SXRlbVxVcGRhdGVEaWV0SXRlbUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Diet/CreateDietComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWV0XENyZWF0ZURpZXRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Diet/ListDietComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWV0XExpc3REaWV0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Diet/UpdateDietComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWV0XFVwZGF0ZURpZXRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Disease/CreateDiseaseComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaXNlYXNlXENyZWF0ZURpc2Vhc2VDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Disease/ListDiseaseComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaXNlYXNlXExpc3REaXNlYXNlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Disease/UpdateDiseaseComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaXNlYXNlXFVwZGF0ZURpc2Vhc2VDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/FeedingPlan/CreateFeedingPlanComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGZWVkaW5nUGxhblxDcmVhdGVGZWVkaW5nUGxhbkNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/FeedingPlan/ListFeedingPlanComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGZWVkaW5nUGxhblxMaXN0RmVlZGluZ1BsYW5Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/FeedingPlan/UpdateFeedingPlanComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGZWVkaW5nUGxhblxVcGRhdGVGZWVkaW5nUGxhbkNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/FeedingSchedule/CreateFeedingScheduleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGZWVkaW5nU2NoZWR1bGVcQ3JlYXRlRmVlZGluZ1NjaGVkdWxlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/FeedingSchedule/ListFeedingScheduleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGZWVkaW5nU2NoZWR1bGVcTGlzdEZlZWRpbmdTY2hlZHVsZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/FeedingSchedule/UpdateFeedingScheduleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGZWVkaW5nU2NoZWR1bGVcVXBkYXRlRmVlZGluZ1NjaGVkdWxlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/HealthRecord/CreateHealthRecordComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIZWFsdGhSZWNvcmRcQ3JlYXRlSGVhbHRoUmVjb3JkQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/HealthRecord/ListHealthRecordComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIZWFsdGhSZWNvcmRcTGlzdEhlYWx0aFJlY29yZENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/HealthRecord/UpdateHealthRecordComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIZWFsdGhSZWNvcmRcVXBkYXRlSGVhbHRoUmVjb3JkQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Location/CreateLocationComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2NhdGlvblxDcmVhdGVMb2NhdGlvbkNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Location/ListLocationComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2NhdGlvblxMaXN0TG9jYXRpb25Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Location/UpdateLocationComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2NhdGlvblxVcGRhdGVMb2NhdGlvbkNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/MedicalCheckup/CreateMedicalCheckupComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNZWRpY2FsQ2hlY2t1cFxDcmVhdGVNZWRpY2FsQ2hlY2t1cENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/MedicalCheckup/ListMedicalCheckupComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNZWRpY2FsQ2hlY2t1cFxMaXN0TWVkaWNhbENoZWNrdXBDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/MedicalCheckup/UpdateMedicalCheckupComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNZWRpY2FsQ2hlY2t1cFxVcGRhdGVNZWRpY2FsQ2hlY2t1cENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Animal/CreateAnimalPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBbmltYWxcQ3JlYXRlQW5pbWFsUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Animal/ListAnimalPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBbmltYWxcTGlzdEFuaW1hbFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Animal/UpdateAnimalPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBbmltYWxcVXBkYXRlQW5pbWFsUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/AuditLog/CreateAuditLogPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdWRpdExvZ1xDcmVhdGVBdWRpdExvZ1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/AuditLog/ListAuditLogPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdWRpdExvZ1xMaXN0QXVkaXRMb2dQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/AuditLog/UpdateAuditLogPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdWRpdExvZ1xVcGRhdGVBdWRpdExvZ1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Birth/CreateBirthPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaXJ0aFxDcmVhdGVCaXJ0aFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Birth/ListBirthPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaXJ0aFxMaXN0QmlydGhQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Birth/UpdateBirthPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaXJ0aFxVcGRhdGVCaXJ0aFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Breed/CreateBreedPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCcmVlZFxDcmVhdGVCcmVlZFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Breed/ListBreedPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCcmVlZFxMaXN0QnJlZWRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Breed/UpdateBreedPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCcmVlZFxVcGRhdGVCcmVlZFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Buyer/CreateBuyerPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCdXllclxDcmVhdGVCdXllclBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Buyer/ListBuyerPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCdXllclxMaXN0QnV5ZXJQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Buyer/UpdateBuyerPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCdXllclxVcGRhdGVCdXllclBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/DietItem/CreateDietItemPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaWV0SXRlbVxDcmVhdGVEaWV0SXRlbVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/DietItem/ListDietItemPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaWV0SXRlbVxMaXN0RGlldEl0ZW1QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/DietItem/UpdateDietItemPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaWV0SXRlbVxVcGRhdGVEaWV0SXRlbVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Diet/CreateDietPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaWV0XENyZWF0ZURpZXRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Diet/ListDietPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaWV0XExpc3REaWV0UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Diet/UpdateDietPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaWV0XFVwZGF0ZURpZXRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Disease/CreateDiseasePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaXNlYXNlXENyZWF0ZURpc2Vhc2VQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Disease/ListDiseasePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaXNlYXNlXExpc3REaXNlYXNlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Disease/UpdateDiseasePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEaXNlYXNlXFVwZGF0ZURpc2Vhc2VQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/FeedingPlan/CreateFeedingPlanPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkaW5nUGxhblxDcmVhdGVGZWVkaW5nUGxhblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/FeedingPlan/ListFeedingPlanPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkaW5nUGxhblxMaXN0RmVlZGluZ1BsYW5QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/FeedingPlan/UpdateFeedingPlanPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkaW5nUGxhblxVcGRhdGVGZWVkaW5nUGxhblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/FeedingSchedule/CreateFeedingSchedulePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkaW5nU2NoZWR1bGVcQ3JlYXRlRmVlZGluZ1NjaGVkdWxlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/FeedingSchedule/ListFeedingSchedulePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkaW5nU2NoZWR1bGVcTGlzdEZlZWRpbmdTY2hlZHVsZVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/FeedingSchedule/UpdateFeedingSchedulePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGZWVkaW5nU2NoZWR1bGVcVXBkYXRlRmVlZGluZ1NjaGVkdWxlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/HealthRecord/CreateHealthRecordPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFsdGhSZWNvcmRcQ3JlYXRlSGVhbHRoUmVjb3JkUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/HealthRecord/ListHealthRecordPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFsdGhSZWNvcmRcTGlzdEhlYWx0aFJlY29yZFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/HealthRecord/UpdateHealthRecordPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFsdGhSZWNvcmRcVXBkYXRlSGVhbHRoUmVjb3JkUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Location/CreateLocationPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2NhdGlvblxDcmVhdGVMb2NhdGlvblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Location/ListLocationPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2NhdGlvblxMaXN0TG9jYXRpb25QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Location/UpdateLocationPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2NhdGlvblxVcGRhdGVMb2NhdGlvblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/MedicalCheckup/CreateMedicalCheckupPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZWRpY2FsQ2hlY2t1cFxDcmVhdGVNZWRpY2FsQ2hlY2t1cFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/MedicalCheckup/ListMedicalCheckupPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZWRpY2FsQ2hlY2t1cFxMaXN0TWVkaWNhbENoZWNrdXBQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/MedicalCheckup/UpdateMedicalCheckupPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZWRpY2FsQ2hlY2t1cFxVcGRhdGVNZWRpY2FsQ2hlY2t1cFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/ReproductionRecord/CreateReproductionRecordPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXByb2R1Y3Rpb25SZWNvcmRcQ3JlYXRlUmVwcm9kdWN0aW9uUmVjb3JkUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/ReproductionRecord/ListReproductionRecordPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXByb2R1Y3Rpb25SZWNvcmRcTGlzdFJlcHJvZHVjdGlvblJlY29yZFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/ReproductionRecord/UpdateReproductionRecordPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXByb2R1Y3Rpb25SZWNvcmRcVXBkYXRlUmVwcm9kdWN0aW9uUmVjb3JkUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Role/CreateRolePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSb2xlXENyZWF0ZVJvbGVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Role/ListRolePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSb2xlXExpc3RSb2xlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Role/UpdateRolePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSb2xlXFVwZGF0ZVJvbGVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/SaleDetail/CreateSaleDetailPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxlRGV0YWlsXENyZWF0ZVNhbGVEZXRhaWxQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/SaleDetail/ListSaleDetailPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxlRGV0YWlsXExpc3RTYWxlRGV0YWlsUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/SaleDetail/UpdateSaleDetailPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxlRGV0YWlsXFVwZGF0ZVNhbGVEZXRhaWxQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Sale/CreateSalePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxlXENyZWF0ZVNhbGVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Sale/ListSalePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxlXExpc3RTYWxlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Sale/UpdateSalePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxlXFVwZGF0ZVNhbGVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Species/CreateSpeciesPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTcGVjaWVzXENyZWF0ZVNwZWNpZXNQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Species/ListSpeciesPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTcGVjaWVzXExpc3RTcGVjaWVzUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Species/UpdateSpeciesPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTcGVjaWVzXFVwZGF0ZVNwZWNpZXNQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Treatment/CreateTreatmentPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmVhdG1lbnRcQ3JlYXRlVHJlYXRtZW50UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Treatment/ListTreatmentPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmVhdG1lbnRcTGlzdFRyZWF0bWVudFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Treatment/UpdateTreatmentPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmVhdG1lbnRcVXBkYXRlVHJlYXRtZW50UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/User/CreateUserPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyXENyZWF0ZVVzZXJQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/User/ListUserPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyXExpc3RVc2VyUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/User/UpdateUserPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyXFVwZGF0ZVVzZXJQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Vaccine/CreateVaccinePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWYWNjaW5lXENyZWF0ZVZhY2NpbmVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Vaccine/ListVaccinePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWYWNjaW5lXExpc3RWYWNjaW5lUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Vaccine/UpdateVaccinePage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWYWNjaW5lXFVwZGF0ZVZhY2NpbmVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/ReproductionRecord/CreateReproductionRecordComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZXByb2R1Y3Rpb25SZWNvcmRcQ3JlYXRlUmVwcm9kdWN0aW9uUmVjb3JkQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/ReproductionRecord/ListReproductionRecordComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZXByb2R1Y3Rpb25SZWNvcmRcTGlzdFJlcHJvZHVjdGlvblJlY29yZENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/ReproductionRecord/UpdateReproductionRecordComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZXByb2R1Y3Rpb25SZWNvcmRcVXBkYXRlUmVwcm9kdWN0aW9uUmVjb3JkQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Role/CreateRoleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb2xlXENyZWF0ZVJvbGVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Role/ListRoleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb2xlXExpc3RSb2xlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Role/UpdateRoleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb2xlXFVwZGF0ZVJvbGVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/SaleDetail/CreateSaleDetailComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTYWxlRGV0YWlsXENyZWF0ZVNhbGVEZXRhaWxDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/SaleDetail/ListSaleDetailComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTYWxlRGV0YWlsXExpc3RTYWxlRGV0YWlsQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/SaleDetail/UpdateSaleDetailComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTYWxlRGV0YWlsXFVwZGF0ZVNhbGVEZXRhaWxDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Sale/CreateSaleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTYWxlXENyZWF0ZVNhbGVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Sale/ListSaleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTYWxlXExpc3RTYWxlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Sale/UpdateSaleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTYWxlXFVwZGF0ZVNhbGVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Species/CreateSpeciesComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTcGVjaWVzXENyZWF0ZVNwZWNpZXNDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Species/ListSpeciesComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTcGVjaWVzXExpc3RTcGVjaWVzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Species/UpdateSpeciesComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTcGVjaWVzXFVwZGF0ZVNwZWNpZXNDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Treatment/CreateTreatmentComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUcmVhdG1lbnRcQ3JlYXRlVHJlYXRtZW50Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Treatment/ListTreatmentComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUcmVhdG1lbnRcTGlzdFRyZWF0bWVudENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Treatment/UpdateTreatmentComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUcmVhdG1lbnRcVXBkYXRlVHJlYXRtZW50Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/User/CreateUserComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVc2VyXENyZWF0ZVVzZXJDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/User/ListUserComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVc2VyXExpc3RVc2VyQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/User/UpdateUserComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVc2VyXFVwZGF0ZVVzZXJDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Vaccine/CreateVaccineComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xWYWNjaW5lXENyZWF0ZVZhY2NpbmVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Vaccine/ListVaccineComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xWYWNjaW5lXExpc3RWYWNjaW5lQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Vaccine/UpdateVaccineComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xWYWNjaW5lXFVwZGF0ZVZhY2NpbmVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-bsmg6rx2n5
+
+[C:/Septimo Semestre/Aplicaciones Web/repo-sprint/spprint5-sinDiseño/scg-sistema-control-ganadero/GestionGanaderaWebApp/Presentation/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-xg50uw8dwo

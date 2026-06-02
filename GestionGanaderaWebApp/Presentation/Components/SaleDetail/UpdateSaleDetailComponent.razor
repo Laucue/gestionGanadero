@@ -1,0 +1,59 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Sale Detail</h3>
+
+<EditForm Model="obj" OnValidSubmit="Update" FormName="FrmSaleDetail">
+    <div>
+        <label>Sale Id:</label>
+        <InputSelect @bind-Value="obj.IdSale">
+            <option value="">Seleccione</option>
+            @if (sales != null)
+            {
+                @foreach (var s in sales)
+                {
+                    <option value="@s.IdSale">@s.IdSale - @s.IdAnimal</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Monto:</label>
+        <InputNumber @bind-Value="obj.Amount" />
+    </div>
+    <button type="submit">Actualizar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    SaleDetailsEntity obj = new SaleDetailsEntity();
+    private string? successMessage;
+    List<SalesEntity> sales = new List<SalesEntity>();
+    [Parameter] public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        sales = await Task.Run(() => SalesLog.SaleList());
+        var list = await Task.Run(() => SaleDetailsLog.SaleDetailList());
+        obj = list.FirstOrDefault(x => x.IdSaleDetail == Id) ?? new SaleDetailsEntity();
+    }
+
+    private void Update()
+    {
+        try
+        {
+            SaleDetailsLog.UpdateSaleDetail(obj);
+            successMessage = $"El detalle de venta se actualizó exitosamente!";
+            NavManager.NavigateTo("saledetail/list");
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al actualizar el detalle de venta: {ex.Message}";
+        }
+    }
+}

@@ -1,0 +1,82 @@
+ListFeedingPlanComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Planes de Alimentación</h3>
+
+@if (feedingPlans == null)
+{
+    <p>Cargando...</p>
+}
+else if (!feedingPlans.Any())
+{
+    <p>No hay planes de alimentación registrados.</p>
+}
+else
+{
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Especie</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var plan in feedingPlans)
+                {
+                    <tr>
+                        <td>@plan.Name</td>
+                        <td>@GetSpeciesName(plan.IdSpecies ?? 0)</td>
+                        <td>@plan.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    // Lista de planes de alimentación
+    List<FeedingPlansEntity> feedingPlans = new List<FeedingPlansEntity>();
+    
+    // Lista de especies disponibles
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de planes de alimentación y especies de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadFeedingPlans();
+        await LoadSpecies();
+    }
+    
+    /*
+     * Carga asíncrona de planes de alimentación
+     */
+    private async Task LoadFeedingPlans()
+    {
+        feedingPlans = await Task.Run(() => FeedingPlansLog.FeedingPlanList());
+    }
+    
+    /*
+     * Carga asíncrona de especies
+     */
+    private async Task LoadSpecies()
+    {
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+    }
+    
+    /*
+     * Obtiene el nombre de la especie basado en el ID
+     */
+    private string GetSpeciesName(int idSpecies)
+    {
+        var speciesEntity = species.FirstOrDefault(s => s.IdSpecies == idSpecies);
+        return speciesEntity?.Name ?? "Especie no encontrada";
+    }
+}

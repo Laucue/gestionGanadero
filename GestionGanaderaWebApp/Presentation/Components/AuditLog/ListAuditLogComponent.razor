@@ -1,0 +1,61 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Registros de Auditoría</h3>
+
+<div>
+    <a href="auditlog/create" class="btn btn-primary">Crear Nuevo Registro de Auditoría</a>
+</div>
+
+@if (auditLogList != null && auditLogList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Entidad</th>
+            <th>ID Entidad</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var auditLog in auditLogList)
+        {
+            <tr>
+                <td>@auditLog.IdAudit</td>
+                <td>@(auditLog.User?.FullName ?? "N/A")</td>
+                <td>@auditLog.Action</td>
+                <td>@auditLog.Entity</td>
+                <td>@auditLog.EntityId</td>
+                <td>@auditLog.Timestamp.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <a href="auditlog/update/@auditLog.IdAudit" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay registros de auditoría registrados.</p>
+}
+
+@code {
+    // Lista de registros de auditoría
+    List<ActivityLogEntity> auditLogList = new List<ActivityLogEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de registros de auditoría de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de registros de auditoría
+        auditLogList = await Task.Run(() => ActivityLogLog.AuditLogList());
+    }
+}

@@ -1,0 +1,59 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Ventas</h3>
+
+<div>
+    <a href="sale/create" class="btn btn-primary">Crear Nueva Venta</a>
+</div>
+
+@if (saleList != null && saleList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Animal</th>
+            <th>Comprador</th>
+            <th>Fecha de Venta</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var sale in saleList)
+        {
+            <tr>
+                <td>@sale.IdSale</td>
+                <td>@(sale.Animal?.EarringCode ?? "N/A")</td>
+                <td>@sale.BuyerName</td>
+                <td>@sale.SaleDate.ToString("dd/MM/yyyy")</td>
+                <td>@sale.Price</td>
+                <td>
+                    <a href="sale/update/@sale.IdSale" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay ventas registradas.</p>
+}
+
+@code {
+    // Lista de ventas
+    List<SalesEntity> saleList = new List<SalesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de ventas de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de ventas
+           saleList = await Task.Run(() => SalesLog.SaleList());
+    }
+}

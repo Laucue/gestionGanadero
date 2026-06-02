@@ -1,0 +1,10 @@
+UpdateFeedingPlanPage.razor
+@page "/feedingplan/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Plan de Alimentación</h3>
+<UpdateFeedingPlanComponent Id="@Id.ToString()"></UpdateFeedingPlanComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

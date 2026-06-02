@@ -1,0 +1,57 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Horarios de Alimentación</h3>
+
+<div>
+    <a href="feedingschedule/create" class="btn btn-primary">Crear Nuevo Horario de Alimentación</a>
+</div>
+
+@if (feedingScheduleList != null && feedingScheduleList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Animal</th>
+            <th>Dieta</th>
+            <th>Hora</th>
+            <th>Día de la Semana</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var schedule in feedingScheduleList)
+        {
+            <tr>
+                <td>@schedule.IdSchedule</td>
+                <td>@(schedule.Animal?.EarringCode ?? "N/A")</td>
+                <td>@(schedule.Diet?.Name ?? "N/A")</td>
+                <td>
+                    <a href="feedingschedule/update/@schedule.IdSchedule" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay horarios de alimentación registrados.</p>
+}
+
+@code {
+    // Lista de horarios de alimentación
+    List<FeedingSchedulesEntity> feedingScheduleList = new List<FeedingSchedulesEntity>();
+
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de horarios de alimentación de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de horarios de alimentación
+        feedingScheduleList = await Task.Run(() => FeedingSchedulesLog.FeedingScheduleList());
+    }
+}

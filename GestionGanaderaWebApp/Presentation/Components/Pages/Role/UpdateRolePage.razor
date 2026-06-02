@@ -1,0 +1,9 @@
+@page "/role/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Rol</h3>
+<UpdateRoleComponent Id="@Id"></UpdateRoleComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

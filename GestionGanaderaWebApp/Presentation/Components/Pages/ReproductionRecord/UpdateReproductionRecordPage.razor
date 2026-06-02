@@ -1,0 +1,10 @@
+
+@page "/reproductionrecord/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Registro de Reproducción</h3>
+<UpdateReproductionRecordComponent Id="@Id.ToString()"></UpdateReproductionRecordComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

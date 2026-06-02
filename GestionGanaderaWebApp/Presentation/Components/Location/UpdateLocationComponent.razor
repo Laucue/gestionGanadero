@@ -1,0 +1,184 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Actualizar Ubicación</h3>
+
+<EditForm Model="objLocation" OnValidSubmit="UpdateLocation" FormName="FrmLocation">
+    <div class="form-container">
+        <div class="form-column">
+            <div class="form-group">
+                <label class="form-label">Nombre:</label>
+                <InputText @bind-Value="objLocation.Name" class="form-input" placeholder="Ingrese el nombre de la ubicación" />
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Área (Hectáreas):</label>
+                <InputNumber @bind-Value="objLocation.AreaHectares" class="form-input" />
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Tipo de Pasto:</label>
+                <InputText @bind-Value="objLocation.PastureType" class="form-input" placeholder="Tipo de pasto predominante" />
+            </div>
+        </div>
+        
+        <div class="form-column">
+            <div class="form-group">
+                <label class="form-label">Latitud:</label>
+                <InputNumber @bind-Value="objLocation.Latitude" class="form-input" />
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Longitud:</label>
+                <InputNumber @bind-Value="objLocation.Longitude" class="form-input" />
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Descripción:</label>
+                <InputTextArea @bind-Value="objLocation.Description" class="form-textarea" placeholder="Descripción detallada de la ubicación..." />
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </div>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div class="alert alert-success">@successMessage</div>
+}
+
+<style>
+    .form-container {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .form-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    
+    .form-input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    
+    .form-textarea {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        height: 100px;
+        resize: vertical;
+        font-family: inherit;
+    }
+    
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        min-width: 120px;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    
+    .alert {
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-top: 15px;
+    }
+    
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .form-container {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+</style>
+
+@code {
+    // Instancia de la ubicación que se está actualizando
+    LocationsEntity objLocation = new LocationsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // ID de la ubicación a actualizar
+    [Parameter] public int Id { get; set; }
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la ubicación a actualizar.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga la lista de ubicaciones y encuentra la que coincide con el ID
+        var locationList = await Task.Run(() => LocationsLog.LocationList());
+        objLocation = locationList.FirstOrDefault(l => l.IdLocation == Id) ?? new LocationsEntity();
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza la ubicación en la base de datos.
+     */
+    private void UpdateLocation()
+    {
+        try
+        {
+            // Llama al método para actualizar la ubicación en la capa lógica
+            LocationsLog.UpdateLocation(objLocation);
+            // Muestra un mensaje de éxito
+            successMessage = $"La ubicación '{objLocation?.Name}' se actualizó exitosamente!";
+            
+            // Redirecciona a la lista después de 2 segundos
+            // NavManager.NavigateTo("location/list");
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar la ubicación: {ex.Message}";
+        }
+    }
+}

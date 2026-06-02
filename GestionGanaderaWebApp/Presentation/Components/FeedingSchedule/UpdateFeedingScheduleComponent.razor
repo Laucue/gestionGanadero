@@ -1,0 +1,166 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Editar Horario de Alimentación</h3>
+
+@if (loading)
+{
+    <p>Cargando...</p>
+}
+else if (objFeedingSchedule == null)
+{
+    <p>Horario de alimentación no encontrado.</p>
+}
+else
+{
+    <EditForm Model="objFeedingSchedule" OnValidSubmit="UpdateFeedingSchedule" FormName="FrmFeedingScheduleUpdate">
+        <div>
+            <label>Animal:</label>
+            <InputSelect @bind-Value="objFeedingSchedule.IdAnimal">
+                <option value="">Seleccione</option>
+                @if (animals != null)
+                {
+                    @foreach (var animal in animals)
+                    {
+                        <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Especie:</label>
+            <InputSelect @bind-Value="objFeedingSchedule.IdSpecies">
+                <option value="">Seleccione</option>
+                @if (species != null)
+                {
+                    @foreach (var s in species)
+                    {
+                        <option value="@s.IdSpecies">@s.Name</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Dieta:</label>
+            <InputSelect @bind-Value="objFeedingSchedule.IdDiet">
+                <option value="">Seleccione</option>
+                @if (diets != null)
+                {
+                    @foreach (var diet in diets)
+                    {
+                        <option value="@diet.IdDiet">@diet.Name</option>
+                    }
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <label>Fecha Inicio:</label>
+            <InputDate @bind-Value="objFeedingSchedule.StartDate" />
+        </div>
+        <div>
+            <label>Fecha Fin:</label>
+            <InputDate @bind-Value="objFeedingSchedule.EndDate" />
+        </div>
+        <div>
+            <label>Hora:</label>
+            <InputText @bind-Value="objFeedingSchedule.Time" />
+        </div>
+        <button type="submit">Actualizar</button>
+        <button type="button" @onclick="Cancel">Cancelar</button>
+    </EditForm>
+
+    @if (successMessage != null)
+    {
+        <div>@successMessage</div>
+    }
+}
+
+@code {
+    // Parámetro de ruta para el ID del horario de alimentación
+    [Parameter]
+    public string? Id { get; set; }
+    
+    // Instancia del horario de alimentación que se está editando
+    FeedingSchedulesEntity objFeedingSchedule = new FeedingSchedulesEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Listas para los selects
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    List<PastureTypesEntity> species = new List<PastureTypesEntity>();
+    List<DietsEntity> diets = new List<DietsEntity>();
+    
+    // Bandera para controlar el estado de carga
+    private bool loading = true;
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga las listas necesarias y el horario de alimentación específico.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de datos de referencia
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        species = await Task.Run(() => PastureTypesLog.SpeciesList());
+        diets = await Task.Run(() => DietsLog.DietList());
+        
+        // Carga el horario de alimentación si se proporcionó un ID
+        if (!string.IsNullOrEmpty(Id) && int.TryParse(Id, out int feedingScheduleId))
+        {
+            await LoadFeedingSchedule(feedingScheduleId);
+        }
+        else
+        {
+            loading = false;
+        }
+    }
+    
+    /*
+     * Carga un horario de alimentación específico por ID
+     */
+    private async Task LoadFeedingSchedule(int id)
+    {
+        try
+        {
+            var feedingSchedules = await Task.Run(() => FeedingSchedulesLog.FeedingScheduleList());
+            // CORREGIDO: Usar la propiedad correcta IdSchedule
+            objFeedingSchedule = feedingSchedules.FirstOrDefault(fs => fs.IdSchedule == id);
+            loading = false;
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al cargar el horario de alimentación: {ex.Message}";
+            loading = false;
+        }
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Actualiza el horario de alimentación en la base de datos.
+     */
+    private void UpdateFeedingSchedule()
+    {
+        try
+        {
+            // Llama al método para actualizar un horario de alimentación en la capa lógica
+            FeedingSchedulesLog.UpdateFeedingSchedule(objFeedingSchedule);
+            // Muestra un mensaje de éxito
+            successMessage = "El horario de alimentación se actualizó exitosamente!";
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al actualizar el horario de alimentación: {ex.Message}";
+        }
+    }
+    
+    /*
+     * Método para cancelar la edición y regresar
+     */
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/feedingschedules");
+    }
+}

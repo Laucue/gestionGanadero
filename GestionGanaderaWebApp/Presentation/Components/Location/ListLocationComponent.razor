@@ -1,0 +1,57 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Ubicaciones</h3>
+
+<div>
+    <a href="location/create" class="btn btn-primary">Crear Nueva Ubicación</a>
+</div>
+
+@if (locationList != null && locationList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Área (Ha)</th>
+            <th>Tipo de Pasto</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var location in locationList)
+        {
+            <tr>
+                <td>@location.IdLocation</td>
+                <td>@location.Name</td>
+                <td>@location.AreaHectares</td>
+                <td>@location.PastureType</td>
+                <td>
+                    <a href="location/update/@location.IdLocation" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay ubicaciones registradas.</p>
+}
+
+@code {
+    // Lista de ubicaciones
+    List<LocationsEntity> locationList = new List<LocationsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de ubicaciones de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de ubicaciones
+        locationList = await Task.Run(() => LocationsLog.LocationList());
+    }
+}

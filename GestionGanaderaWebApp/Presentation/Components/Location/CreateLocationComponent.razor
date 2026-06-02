@@ -1,0 +1,251 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<div class="location-form-container">
+    <h3>Crear Ubicación</h3>
+
+    <EditForm Model="objLocation" OnValidSubmit="SaveLocation" FormName="FrmLocation">
+        <div class="form-grid">
+            <!-- Primera columna -->
+            <div class="form-column">
+                <div class="form-group">
+                    <label class="form-label">Nombre:</label>
+                    <InputText @bind-Value="objLocation.Name" class="form-input" placeholder="Ingrese el nombre de la ubicación" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Área (Hectáreas):</label>
+                    <InputNumber @bind-Value="objLocation.AreaHectares" class="form-input" placeholder="0.00" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tipo de Pasto:</label>
+                    <InputText @bind-Value="objLocation.PastureType" class="form-input" placeholder="Tipo de pasto predominante" />
+                </div>
+            </div>
+
+            <!-- Segunda columna -->
+            <div class="form-column">
+                <div class="form-group">
+                    <label class="form-label">Latitud:</label>
+                    <InputNumber @bind-Value="objLocation.Latitude" class="form-input" placeholder="0.000000" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Longitud:</label>
+                    <InputNumber @bind-Value="objLocation.Longitude" class="form-input" placeholder="0.000000" />
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Descripción:</label>
+                    <InputTextArea @bind-Value="objLocation.Description" class="form-textarea" placeholder="Descripción detallada de la ubicación..." />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                <i class="bi bi-check-circle me-2"></i>Guardar
+            </button>
+        </div>
+    </EditForm>
+
+    @if (successMessage != null)
+    {
+    <div class="alert @(successMessage.Contains("Error") ? "alert-error" : "alert-success")">
+        <i class="bi @(successMessage.Contains("Error") ? "bi-exclamation-circle" : "bi-check-circle") me-2"></i>
+        @successMessage
+    </div>
+    }
+</div>
+
+<style>
+    .location-form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h3 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+        font-weight: 600;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 25px;
+    }
+
+    .form-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #2c3e50;
+        font-size: 14px;
+    }
+
+    .form-input, .form-textarea {
+        padding: 12px 15px;
+        border: 1px solid #bdc3c7;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .form-textarea {
+        min-height: 100px;
+        resize: vertical;
+        line-height: 1.5;
+    }
+
+    .form-actions {
+        text-align: right;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ecf0f1;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #2980b9, #2573a7);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 3px rgba(52, 152, 219, 0.4);
+    }
+
+    .alert {
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    .bi {
+        font-size: 16px;
+    }
+
+    @@media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .location-form-container {
+            padding: 15px;
+        }
+
+        .form-actions {
+            text-align: center;
+        }
+    }
+
+    /* Placeholder styling */
+    ::deep input::placeholder,
+    ::deep textarea::placeholder {
+        color: #95a5a6;
+        font-style: italic;
+    }
+
+    /* Number input styling */
+    ::deep input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    ::deep input[type="number"]::-webkit-outer-spin-button,
+    ::deep input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
+@code {
+// Instancia de la ubicación que se está creando
+LocationsEntity objLocation = new LocationsEntity();
+
+// Mensaje para indicar el resultado de la operación
+private string? successMessage;
+
+/*
+ * Método que se ejecuta al enviar el formulario.
+ * Guarda la ubicación en la base de datos.
+ */
+private void SaveLocation()
+{
+try
+{
+// Llama al método para crear una ubicación en la capa lógica
+LocationsLog.CreateLocation(objLocation);
+// Muestra un mensaje de éxito
+successMessage = $"La ubicación '{objLocation?.Name}' se guardó exitosamente!";
+
+// Reinicia el formulario para un nuevo registro
+objLocation = new LocationsEntity();
+}
+catch (Exception ex)
+{
+// Muestra el mensaje de error en caso de excepción
+successMessage = $"Error al guardar la ubicación: {ex.Message}";
+}
+}
+}

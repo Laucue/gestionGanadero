@@ -1,0 +1,10 @@
+UpdateDietItemPage.razor
+@page "/dietitem/update/{Id:int}"
+@rendermode InteractiveServer
+
+<h3>Actualizar Item de Dieta</h3>
+<UpdateDietItemComponent Id="@Id"></UpdateDietItemComponent>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

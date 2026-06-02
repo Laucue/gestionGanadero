@@ -1,0 +1,41 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Buyer</h3>
+
+<EditForm Model="objBuyer" OnValidSubmit="SaveBuyer" FormName="FrmBuyer">
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="objBuyer.Name" />
+    </div>
+    <div>
+        <label>Notas:</label>
+        <InputText @bind-Value="objBuyer.Notes" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    BuyersEntity objBuyer = new BuyersEntity();
+    private string? successMessage;
+
+    private void SaveBuyer()
+    {
+        try
+        {
+            BuyersLog.CreateBuyer(objBuyer);
+            successMessage = $"El buyer '{objBuyer?.Name}' se guardó exitosamente!";
+            objBuyer = new BuyersEntity();
+        }
+        catch (Exception ex)
+        {
+            successMessage = $"Error al guardar el buyer: {ex.Message}";
+        }
+    }
+}

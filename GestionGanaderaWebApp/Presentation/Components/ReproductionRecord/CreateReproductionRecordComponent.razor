@@ -1,0 +1,120 @@
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Crear Registro de Reproducción</h3>
+
+<EditForm Model="objReproductionRecord" OnValidSubmit="SaveReproductionRecord" FormName="FrmReproductionRecord">
+    <div>
+        <label>Animal:</label>
+        <InputSelect @bind-Value="objReproductionRecord.IdAnimal">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var animal in animals)
+                {
+                    <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Tipo de Evento:</label>
+        <InputSelect @bind-Value="objReproductionRecord.EventType">
+            <option value="">Seleccione</option>
+            <option value="HEAT">HEAT</option>
+            <option value="INSEMINATION">INSEMINATION</option>
+            <option value="PREGNANCY_CHECK">PREGNANCY_CHECK</option>
+            <option value="BIRTH">BIRTH</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label>Fecha del Evento:</label>
+        <InputDate @bind-Value="objReproductionRecord.EventDate" />
+    </div>
+    <div>
+        <label>Compañero:</label>
+        <InputSelect @bind-Value="objReproductionRecord.IdPartner">
+            <option value="">Seleccione</option>
+            @if (animals != null)
+            {
+                @foreach (var animal in animals)
+                {
+                    <option value="@animal.IdAnimal">@animal.EarringCode</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label>Método:</label>
+        <InputSelect @bind-Value="objReproductionRecord.Method">
+            <option value="">Seleccione</option>
+            <option value="NATURAL">NATURAL</option>
+            <option value="AI">AI</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label>Resultado:</label>
+        <InputText @bind-Value="objReproductionRecord.Result" />
+    </div>
+    <div>
+        <label>Cantidad de Crías:</label>
+        <InputNumber @bind-Value="objReproductionRecord.OffspringCount" />
+    </div>
+    <div>
+        <label>Notas:</label>
+        <InputTextArea @bind-Value="objReproductionRecord.Notes" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@if (successMessage != null)
+{
+    <div>@successMessage</div>
+}
+
+@code {
+    // Instancia del registro de reproducción que se está creando
+    BreedingRecordsEntity objReproductionRecord = new BreedingRecordsEntity();
+    
+    // Mensaje para indicar el resultado de la operación
+    private string? successMessage;
+    
+    // Lista de animales disponibles para seleccionar
+    List<AnimalsEntity> animals = new List<AnimalsEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de animales de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de animales
+        animals = await Task.Run(() => AnimalsLog.AnimalList());
+        objReproductionRecord.EventDate = DateTime.Now;
+    }
+    
+    /*
+     * Método que se ejecuta al enviar el formulario.
+     * Guarda el registro de reproducción en la base de datos.
+     */
+    private void SaveReproductionRecord()
+    {
+        try
+        {
+            // Llama al método para crear un registro de reproducción en la capa lógica
+            BreedingRecordsLog.CreateReproductionRecord(objReproductionRecord);
+            // Muestra un mensaje de éxito
+            successMessage = "El registro de reproducción se guardó exitosamente!";
+            
+            // Reinicia el formulario para un nuevo registro
+            objReproductionRecord = new BreedingRecordsEntity();
+            objReproductionRecord.EventDate = DateTime.Now;
+        }
+        catch (Exception ex)
+        {
+            // Muestra el mensaje de error en caso de excepción
+            successMessage = $"Error al guardar el registro de reproducción: {ex.Message}";
+        }
+    }
+}

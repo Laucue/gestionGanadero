@@ -1,0 +1,60 @@
+ListVaccineComponent.razor
+@using Logic
+@using Model
+@inject NavigationManager NavManager
+
+<h3>Lista de Vacunas</h3>
+
+<div>
+    <a href="vaccine/create" class="btn btn-primary">Crear Nueva Vacuna</a>
+</div>
+
+@if (vaccineList != null && vaccineList.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fabricante</th>
+            <th>Dosis por Defecto (ml)</th>
+            <th>Días hasta Refuerzo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var vaccine in vaccineList)
+        {
+            <tr>
+                <td>@vaccine.IdVaccine</td>
+                <td>@vaccine.Name</td>
+                <td>@vaccine.Manufacturer</td>
+                <td>@vaccine.DefaultDoseMl</td>
+                <td>@vaccine.BoosterDays</td>
+                <td>
+                    <a href="vaccine/update/@vaccine.IdVaccine" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay vacunas registradas.</p>
+}
+
+@code {
+    // Lista de vacunas
+    List<VaccinesEntity> vaccineList = new List<VaccinesEntity>();
+    
+    /*
+     * Método que se ejecuta al inicializar el componente.
+     * Carga la lista de vacunas de forma asíncrona.
+     */
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga asíncrona de vacunas
+        vaccineList = await Task.Run(() => VaccinesLog.VaccineList());
+    }
+}
